@@ -59,6 +59,7 @@
     <Compile Include="ViewModel\Calculation.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\VM.cs" />
+    <Compile Include="ViewModel\VMbase.cs" />
     <Page Include="styles\Red.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

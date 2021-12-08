@@ -1,34 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.MobileControls;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Calculator_MVVM.ViewModel
 {
-    internal class VM : INotifyPropertyChanged
+    internal class VM : VMbase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
         string _operand = "0";
         string _operation = "";
         Calculation calculator = new Calculation();
         public string Operand { get { return _operand ?? "0"; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation ?? ""; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-        public RelayCommand command { get; private set; }  
-        public void OperandInput(object parameter)
+        public RelayCommand command { get; private set; }
+        #region PrivateMethods
+        private void OperandInput(object parameter)
         {
             calculator.Operand(parameter.ToString(), ref _operand, ref _operation);
             Operand = _operand;
             Operation = _operation;
         }
+        private void OperationInput(object parameter)
+        {
+            calculator.Operation(parameter.ToString(), ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
+        private void PointInput(object parameter)
+        {
+            calculator.Point(ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
+        private void DeleteUsing(object parameter)
+        {
+            calculator.Delete(ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
+        private void TotalUsing(object o)
+        {
+            calculator.Total(ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
+        private void ClearAll(object o)
+        {
+            calculator.ClearAll(ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
+        private void Clear(object o)
+        {
+            calculator.Clear(ref _operand);
+            Operand = _operand;
+        }
+        #endregion
+        #region Commands
         public ICommand OperandCommand
         {
             get
@@ -42,12 +68,8 @@ namespace Calculator_MVVM.ViewModel
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Operation(parameter.ToString(), ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(OperationInput);
+                return command;
             }
         }
 
@@ -55,12 +77,8 @@ namespace Calculator_MVVM.ViewModel
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Point(ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(PointInput);
+                return command;
             }
         }
 
@@ -68,12 +86,8 @@ namespace Calculator_MVVM.ViewModel
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Delete(ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(DeleteUsing);
+                return command;
             }
         }
 
@@ -81,12 +95,8 @@ namespace Calculator_MVVM.ViewModel
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Total(ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(TotalUsing);
+                return command;
             }
         }
 
@@ -94,25 +104,20 @@ namespace Calculator_MVVM.ViewModel
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.ClearAll(ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(ClearAll);
+                return command;
             }
         }
         public ICommand ClearCommand
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Clear(ref _operand);
-                    Operand = _operand;
-                });
+                command = new RelayCommand(Clear);
+                return command;
             }
         }
+        #endregion
+
 
     }
     
