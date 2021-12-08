@@ -56,7 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Calculation.cs" />
+    <Compile Include="ViewModel\Calculation.cs" />
+    <Compile Include="ViewModel\_Calculation.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\VM.cs" />
     <Page Include="styles\Red.xaml">

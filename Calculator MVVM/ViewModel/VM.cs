@@ -19,15 +19,19 @@ namespace Calculator_MVVM.ViewModel
         }
         string _operand = "0";
         string _operation = "";
+        Calculation calculator = new Calculation();
         public string Operand { get { return _operand ?? "0"; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation ?? ""; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
+
+
+                     
         public ICommand OperandCommand
         {
             get
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.Click(parameter.ToString(), ref _operand, ref _operation);
+                    calculator.Click(parameter.ToString(), ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -41,7 +45,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.Action(parameter.ToString(), ref _operand, ref _operation);
+                    calculator.Action(parameter.ToString(), ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -54,7 +58,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.Point(ref _operand, ref _operation);
+                    calculator.Point(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -67,7 +71,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.Delete(ref _operand, ref _operation);
+                    calculator.Delete(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -80,7 +84,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.Equal(ref _operand, ref _operation);
+                    calculator.Equal(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -93,7 +97,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.C_Click(ref _operand, ref _operation);
+                    calculator.C_Click(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -105,7 +109,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    Model.Calculation.CE_Click(ref _operand);
+                    calculator.CE_Click(ref _operand);
                     Operand = _operand;
                 });
             }
