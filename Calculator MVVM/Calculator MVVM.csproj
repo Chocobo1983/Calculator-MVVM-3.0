@@ -58,7 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Calculation.cs" />
     <Compile Include="ViewModel\VM.cs" />
-    <Page Include="styles\Bloody.xaml">
+    <Page Include="styles\Red.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,11 +74,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="styles\Matrix.xaml">
+    <Page Include="styles\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="styles\Snowhite.xaml">
+    <Page Include="styles\DarkGreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="styles\BlueWhite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

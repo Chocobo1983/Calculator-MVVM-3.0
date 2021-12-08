@@ -58,27 +58,27 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding Upper}" Style="{DynamicResource ResourceKey=TextBoxStyle}" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" MinWidth="5" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
-        <TextBox Text="{Binding Lower}" Style="{DynamicResource ResourceKey=TextBoxStyle}" Margin="0,30,5,54" TextWrapping="Wrap" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" FontSize="20" FontWeight="Bold" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1"/>
-        <Button Command="{Binding CE_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Margin="0" Grid.Row="2" Grid.Column="0" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding C_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Margin="0" Grid.Row="2" Grid.Column="1" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Delete}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Margin="0" Grid.Row="2" Grid.Column="2" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Action}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="/" Margin="0" Grid.Row="2" Grid.Column="3" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="7" Margin="0" Grid.Row="3" Grid.Column="0" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="8" Margin="0" Grid.Row="3" Grid.Column="1" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Margin="0" Grid.Row="3" Grid.Column="2" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Action}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Margin="0" Grid.Row="3" Grid.Column="3" FontSize="20" FontWeight="Bold" />
-        <Button Command="{Binding ButtonClick}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Margin="0" Grid.Row="4" Grid.Column="0" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Margin="0" Grid.Row="4" Grid.Column="1" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Margin="0" Grid.Row="4" Grid.Column="2" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Action}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Margin="0" Grid.Row="4" Grid.Column="3" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Margin="0" Grid.Row="5" Grid.Column="0" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="2" Margin="0" Grid.Row="5" Grid.Column="1" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="3" Margin="0" Grid.Row="5" Grid.Column="2" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Action}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="+" Margin="0" Grid.Row="5" Grid.Column="3" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding PointClick}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Margin="0" Grid.Row="6" Grid.Column="0" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding ButtonClick}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Margin="0" Grid.Row="6" Grid.Column="1" FontSize="20" FontWeight="Bold"/>
-        <Button Command="{Binding Equal}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Margin="0" Grid.Row="6" Grid.Column="2" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding Upper}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" MinWidth="5" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
+        <TextBox Text="{Binding Lower}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,5,54" TextWrapping="Wrap" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" FontSize="20" FontWeight="Bold" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1"/>
+        <Button Command="{Binding CE_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
+        <Button Command="{Binding C_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
+        <Button Command="{Binding Delete}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
+        <Button Command="{Binding Action}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="/" Grid.Row="2" Grid.Column="3"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="7" Grid.Row="3" Grid.Column="0"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="8" Grid.Row="3" Grid.Column="1"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Grid.Row="3" Grid.Column="2"/>
+        <Button Command="{Binding Action}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Grid.Row="3" Grid.Column="3"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Grid.Row="4" Grid.Column="0"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Grid.Row="4" Grid.Column="2"/>
+        <Button Command="{Binding Action}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Grid.Row="4" Grid.Column="3"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Grid.Row="5" Grid.Column="0"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="2" Grid.Row="5" Grid.Column="1"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="3" Grid.Row="5" Grid.Column="2"/>
+        <Button Command="{Binding Action}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="+" Grid.Row="5" Grid.Column="3"/>
+        <Button Command="{Binding PointClick}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Grid.Row="6" Grid.Column="0"/>
+        <Button Command="{Binding ButtonClick}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
+        <Button Command="{Binding Equal}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
         <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_Close" Content="" Margin="0,0,5,0" Grid.Column="3" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" Height="20" Width="20" BorderThickness="0" Click="btn_Close_Click">
             <Button.Background>
                 <ImageBrush ImageSource="rss/gtk-red.png"/>
@@ -128,10 +128,10 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  Name="matrix_rb" Content="Matrix" Margin="20,0,0,0" IsChecked="True" Checked="matrix_rb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="snowhite_rb" Content="Snow White" Margin="20,10,0,0" Checked="snowhite_rb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="bloody_rb" Content="Bloody Hell" Margin="20,10,0,0" Checked="bloody_rb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  Name="matrix_rb" Content="Matrix theme" Margin="20,0,0,0" IsChecked="True" Checked="matrix_rb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="snowhite_rb" Content="Blue white theme" Margin="20,10,0,0" Checked="snowhite_rb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="bloody_rb" Content="Red theme" Margin="20,10,0,0" Checked="bloody_rb_Checked"/>
         </WrapPanel>
     </Grid>
-    
 </Window>
+

@@ -30,9 +30,9 @@ namespace Calculator_MVVM
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(res);
         }
-        private void matrix_rb_Checked(object sender, RoutedEventArgs e) => Connect("Matrix.Xaml");
-        private void snowhite_rb_Checked(object sender, RoutedEventArgs e) => Connect("Snowhite.xaml");
-        private void bloody_rb_Checked(object sender, RoutedEventArgs e) => Connect("Bloody.xaml");
+        private void matrix_rb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.Xaml");
+        private void snowhite_rb_Checked(object sender, RoutedEventArgs e) => Connect("BlueWhite.xaml");
+        private void bloody_rb_Checked(object sender, RoutedEventArgs e) => Connect("Red.xaml");
 
         #endregion
 
