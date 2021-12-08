@@ -18,7 +18,7 @@ namespace Calculator_MVVM.ViewModel
         double operand1, operand2;
         char operation;
 
-        public void Click(string parameter, ref string lower_txt, ref string upper_txt)
+        public void Operand(string parameter, ref string lower_txt, ref string upper_txt)
         {
             if (lower_txt == "0." && upper_txt == "")
             {
@@ -47,7 +47,7 @@ namespace Calculator_MVVM.ViewModel
             }
 
         }
-        public void Action(string parameter, ref string lower_txt, ref string upper_txt)
+        public void Operation(string parameter, ref string lower_txt, ref string upper_txt)
         {
             if (!zeroDivError)
             {
@@ -148,7 +148,7 @@ namespace Calculator_MVVM.ViewModel
             else if (lower_txt.Length == 1) lower_txt = "0";
         }
 
-        public void Equal(ref string lower_txt, ref string upper_txt)
+        public void Total(ref string lower_txt, ref string upper_txt)
         {
             if (!point && upper_txt != "") point = true;
             if (lower_txt != "" && !repeatOperation && upper_txt != "")
@@ -180,7 +180,7 @@ namespace Calculator_MVVM.ViewModel
             }
         }
 
-        public void C_Click(ref string lower_txt, ref string upper_txt)
+        public void ClearAll(ref string lower_txt, ref string upper_txt)
         {
             upper_txt = "";
             zeroDivError = false;
@@ -191,7 +191,7 @@ namespace Calculator_MVVM.ViewModel
             clear = false;
         }
 
-        public void CE_Click(ref string lower_txt)
+        public void Clear(ref string lower_txt)
         {
             lower_txt = "0";
         }

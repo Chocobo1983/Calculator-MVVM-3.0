@@ -29,7 +29,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    calculator.Click(parameter.ToString(), ref _operand, ref _operation);
+                    calculator.Operand(parameter.ToString(), ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -43,7 +43,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    calculator.Action(parameter.ToString(), ref _operand, ref _operation);
+                    calculator.Operation(parameter.ToString(), ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -82,7 +82,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    calculator.Equal(ref _operand, ref _operation);
+                    calculator.Total(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -95,7 +95,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    calculator.C_Click(ref _operand, ref _operation);
+                    calculator.ClearAll(ref _operand, ref _operation);
                     Operand = _operand;
                     Operation = _operation;
                 });
@@ -107,7 +107,7 @@ namespace Calculator_MVVM.ViewModel
             {
                 return new RelayCommand(parameter =>
                 {
-                    calculator.CE_Click(ref _operand);
+                    calculator.Clear(ref _operand);
                     Operand = _operand;
                 });
             }
