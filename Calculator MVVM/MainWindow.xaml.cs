@@ -19,7 +19,6 @@ namespace Calculator_MVVM
         public MainWindow()
         {
             InitializeComponent();
-            string test;
         }
 
         #region DictionaryConnections
