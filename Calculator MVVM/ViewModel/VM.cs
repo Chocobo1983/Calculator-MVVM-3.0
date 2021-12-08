@@ -22,9 +22,7 @@ namespace Calculator_MVVM.ViewModel
         Calculation calculator = new Calculation();
         public string Operand { get { return _operand ?? "0"; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation ?? ""; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-
-
-                     
+               
         public ICommand OperandCommand
         {
             get

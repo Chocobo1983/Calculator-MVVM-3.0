@@ -37,7 +37,7 @@
         <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Grid.Row="3" Grid.Column="2"/>
         <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Grid.Row="3" Grid.Column="3"/>
         <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Grid.Row="4" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding Cmd}" Template="{DynamicResource ButtonTemplate}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
         <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Grid.Row="4" Grid.Column="2"/>
         <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Grid.Row="4" Grid.Column="3"/>
         <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Grid.Row="5" Grid.Column="0"/>

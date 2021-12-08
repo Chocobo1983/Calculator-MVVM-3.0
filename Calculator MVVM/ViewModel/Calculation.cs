@@ -10,7 +10,7 @@ namespace Calculator_MVVM.ViewModel
     internal class Calculation
     {
         NumberFormatInfo numberFormatInfo = NumberFormatInfo.InvariantInfo;
-        string operationStr = "", lastOperation = "", selfref = "", bloodyHell = "";
+        string operationStr = "", lastOperation = "", selfref = "", result = "";
         bool repeatOperation = false;
         bool zeroDivError = true;
         bool point = true;
@@ -39,7 +39,7 @@ namespace Calculator_MVVM.ViewModel
                     {
                         upper_txt = "";
                         lower_txt = "";
-                        lastOperation = selfref = bloodyHell = "";
+                        lastOperation = selfref = result = "";
                         clear = false;
                     }
                 }
@@ -73,15 +73,14 @@ namespace Calculator_MVVM.ViewModel
                 operation = upper_txt[upper_txt.Length - 1];
                 operand1 = double.Parse(upper_txt.Remove(upper_txt.Length - 1), numberFormatInfo);
                 operand2 = double.Parse(lower_txt, numberFormatInfo);
-                bloodyHell = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
-                //if (bloodyHell == "Деление на ноль")
+                result = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
                 if(!zeroDivError)
                 {
                     lower_txt = "Деление на ноль";
                     return;
                 }
-                else lower_txt = bloodyHell;
-                upper_txt = bloodyHell + operationStr;
+                else lower_txt = result;
+                upper_txt = result + operationStr;
                 selfref = lower_txt;
                 lower_txt = "";
             }
@@ -129,7 +128,7 @@ namespace Calculator_MVVM.ViewModel
                     if (tmp != '+' && tmp != '-' && tmp != '*' && tmp != '/')
                     {
                         upper_txt = "";
-                        lastOperation = selfref = bloodyHell = "";
+                        lastOperation = selfref = result = "";
                         clear = false;
                         lower_txt = "0";
                     }
