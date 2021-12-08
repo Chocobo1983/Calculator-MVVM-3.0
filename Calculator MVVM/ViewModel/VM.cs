@@ -22,19 +22,20 @@ namespace Calculator_MVVM.ViewModel
         Calculation calculator = new Calculation();
         public string Operand { get { return _operand ?? "0"; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation ?? ""; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-               
+        public RelayCommand command { get; private set; }  
+        public void OperandInput(object parameter)
+        {
+            calculator.Operand(parameter.ToString(), ref _operand, ref _operation);
+            Operand = _operand;
+            Operation = _operation;
+        }
         public ICommand OperandCommand
         {
             get
             {
-                return new RelayCommand(parameter =>
-                {
-                    calculator.Operand(parameter.ToString(), ref _operand, ref _operation);
-                    Operand = _operand;
-                    Operation = _operation;
-                });
+                command = new RelayCommand(OperandInput);
+                return command;
             }
-
         }
 
         public ICommand OperationCommand
