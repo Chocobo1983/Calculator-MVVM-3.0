@@ -10,38 +10,6 @@
     <Window.DataContext>
         <viewmodel:VM/>
     </Window.DataContext>
-    <Window.Resources>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
-                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="true">
-                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>-->
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="true">
-                    <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>-->
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="false">
-                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*" MaxHeight="20"></RowDefinition>
@@ -58,8 +26,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding Upper}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" MinWidth="5" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
-        <TextBox Text="{Binding Lower}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,5,54" TextWrapping="Wrap" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" FontSize="20" FontWeight="Bold" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1"/>
+        <TextBox Text="{Binding Upper}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
+        <TextBox Text="{Binding Lower}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,5,54" TextWrapping="Wrap" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1"/>
         <Button Command="{Binding CE_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
         <Button Command="{Binding C_Button}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
         <Button Command="{Binding Delete}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
@@ -79,45 +47,37 @@
         <Button Command="{Binding PointClick}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Grid.Row="6" Grid.Column="0"/>
         <Button Command="{Binding ButtonClick}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
         <Button Command="{Binding Equal}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_Close" Content="" Margin="0,0,5,0" Grid.Column="3" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" Height="20" Width="20" BorderThickness="0" Click="btn_Close_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="rss/gtk-red.png"/>
-            </Button.Background>
-        </Button>
-        <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_restore" Content="" Margin="0,0,25,0" Grid.Column="3" FontSize="10" FontWeight="Bold" Width="20" Height="20" HorizontalAlignment="Right" BorderThickness="0" Click="btn_restore_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="rss/gtk-media-record_yellow.png"/>
-            </Button.Background>
-        </Button>
-        <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_hide" Content="" Margin="0,0,45,0" Grid.Column="3" FontSize="10" FontWeight="Bold" Width="20" Height="20" HorizontalAlignment="Right" BorderThickness="0" Click="btn_hide_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="rss/gtk-media-record_green.png"/>
-            </Button.Background>
-        </Button>
-        <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_logo" Content="" Margin="10,0,0,0" Grid.Column="0" FontSize="10" FontWeight="Bold" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
-            <Button.Background>
-                <ImageBrush ImageSource="rss/Calculator.png"/>
-            </Button.Background>
-        </Button>
-        <Button Template="{DynamicResource ButtonTemplate}" x:Name="btn_settings" Content="" Margin="30,0,0,0" Grid.Column="0" FontSize="10" FontWeight="Bold" Width="20" Height="20" HorizontalAlignment="Left" BorderThickness="0">
-            <Button.Background>
-                <ImageBrush ImageSource="rss/Settings.png"/>
-            </Button.Background>
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard TargetProperty="Height" TargetName="set_panel">
-                            <DoubleAnimation From="0" To="450" AutoReverse="False" Duration="0:0:0.3"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3" FlowDirection="RightToLeft">
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_Close" Height="20" Width="20" BorderThickness="0" Click="btn_Close_Click">
+                <Image Source="\rss\gtk-red.png"/>
+            </Button>
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_restore" Width="20" Height="20" BorderThickness="0" Click="btn_restore_Click">
+                <Image Source="\rss\gtk-media-record_yellow.png"/>
+            </Button>
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_hide" Width="20" Height="20" BorderThickness="0" Click="btn_hide_Click">
+                <Image Source="rss/gtk-media-record_green.png"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_logo" Width="20" Height="20" BorderThickness="0">
+                <Image Source="rss/Calculator.png"/>
+            </Button>
+            <Button Style="{DynamicResource ButtonStyle}" x:Name="btn_settings" Width="20" Height="20" BorderThickness="0">
+                <Image Source="rss/Settings.png"/>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Height" TargetName="set_panel">
+                                <DoubleAnimation From="0" To="450" AutoReverse="False" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
         <WrapPanel Style="{DynamicResource ResourceKey=WrapPanelStyle}" Name="set_panel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical">
-            <Button Template="{DynamicResource ButtonTemplate}" Name="return_btn" Content="" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Width="20" Height="20">
-                <Button.Background>
-                    <ImageBrush ImageSource="rss/arrow-up.png"/>
-                </Button.Background>
+            <Button Style="{DynamicResource ButtonStyle}" Name="return_btn" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Width="20" Height="20">
+                <Image Source="rss/arrow-up.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard>
