@@ -38,13 +38,13 @@ namespace Calculator_MVVM
 
         #region WindowControl
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) => DragMove();
-        private void btn_Close_Click(object sender, RoutedEventArgs e) => Close();
-        private void btn_restore_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e) => Close();
+        private void Maximize_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal) this.WindowState = WindowState.Maximized;
             else this.WindowState = WindowState.Normal;
         }
-        private void btn_hide_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
+        private void Minimize_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
 
         #endregion       
     }

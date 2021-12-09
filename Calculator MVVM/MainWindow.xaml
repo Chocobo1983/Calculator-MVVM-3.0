@@ -48,13 +48,13 @@
         <Button Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
         <Button Command="{Binding TotalCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3">
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_hide" Width="20" Height="20" BorderThickness="0" Click="btn_hide_Click">
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Minimize" Click="Minimize_Click">
                 <Image Source="rss/gtk-media-record_green.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_restore" Click="btn_restore_Click">
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Maximize" Click="Maximize_Click">
                 <Image Source="\rss\gtk-media-record_yellow.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_Close" Click="btn_Close_Click">
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Close" Click="Close_Click">
                 <Image Source="\rss\gtk-red.png"/>
             </Button>
         </StackPanel>
@@ -76,7 +76,7 @@
             </Button>
         </StackPanel>
         <WrapPanel Style="{DynamicResource ResourceKey=WrapPanelStyle}" Name="setPanel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical">
-            <Button Style="{DynamicResource ButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Width="20" Height="20">
+            <Button Style="{DynamicResource MiniButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20">
                 <Image Source="rss/arrow-up.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
