@@ -18,182 +18,182 @@ namespace Calculator_MVVM.ViewModel
         double operand1, operand2;
         char operation;
 
-        public void Operand(string parameter, ref string lower_txt, ref string upper_txt)
+        public void Operand(string parameter, ref string operand, ref string operation)
         {
-            if (lower_txt == "0." && upper_txt == "")
+            if (operand == "0." && operation == "")
             {
-                lower_txt += parameter;
+                operand += parameter;
                 zeroDivError = true;
             }
             else
             {
-                if (lower_txt == "0" || !zeroDivError)
+                if (operand == "0" || !zeroDivError)
                 {
-                    lower_txt = "";
+                    operand = "";
                     zeroDivError = true;
                 }
-                else if (upper_txt != "" && lower_txt != "")
+                else if (operation != "" && operand != "")
                 {
-                    char tmp = upper_txt[upper_txt.Length - 1];
+                    char tmp = operation[operation.Length - 1];
                     if (tmp != '+' && tmp != '-' && tmp != '*' && tmp != '/')
                     {
-                        upper_txt = "";
-                        lower_txt = "";
+                        operation = "";
+                        operand = "";
                         lastOperation = selfref = result = "";
                         clear = false;
                     }
                 }
-                lower_txt += parameter;
+                operand += parameter;
             }
 
         }
-        public void Operation(string parameter, ref string lower_txt, ref string upper_txt)
+        public void Operation(string parameter, ref string operand, ref string operationCurrent)
         {
             if (!zeroDivError)
             {
                 zeroDivError = true;
-                lower_txt = "0";
+                operand = "0";
             }
             if (!point) point = true;
             if (!clear) clear = true;
             operationStr = parameter;
-            if (upper_txt != "" && lower_txt == "")
+            if (operationCurrent != "" && operand == "")
             {
-                char tmp = upper_txt[upper_txt.Length - 1];
+                char tmp = operationCurrent[operationCurrent.Length - 1];
                 if (tmp == '+' || tmp == '-' || tmp == '*' || tmp == '/')
                 {
-                    upper_txt.Remove(upper_txt.Length - 1);
-                    upper_txt = selfref + operationStr;
+                    operationCurrent.Remove(operationCurrent.Length - 1);
+                    operationCurrent = selfref + operationStr;
                 }
-                lower_txt = "";
+                operand = "";
             }
-            else if (upper_txt != "" && lower_txt != "" && !repeatOperation)
+            else if (operationCurrent != "" && operand != "" && !repeatOperation)
             {
 
-                operation = upper_txt[upper_txt.Length - 1];
-                operand1 = double.Parse(upper_txt.Remove(upper_txt.Length - 1), numberFormatInfo);
-                operand2 = double.Parse(lower_txt, numberFormatInfo);
-                result = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
+                operation = operationCurrent[operationCurrent.Length - 1];
+                operand1 = double.Parse(operationCurrent.Remove(operationCurrent.Length - 1), numberFormatInfo);
+                operand2 = double.Parse(operand, numberFormatInfo);
+                result = Calculate(ref operand1, ref operand2, ref operation, ref operationCurrent);
                 if(!zeroDivError)
                 {
-                    lower_txt = "Деление на ноль";
+                    operand = "Деление на ноль";
                     return;
                 }
-                else lower_txt = result;
-                upper_txt = result + operationStr;
-                selfref = lower_txt;
-                lower_txt = "";
+                else operand = result;
+                operationCurrent = result + operationStr;
+                selfref = operand;
+                operand = "";
             }
             else
             {
-                if (lower_txt[lower_txt.Length - 1] == '.') lower_txt = lower_txt.Remove(lower_txt.Length - 1);
-                upper_txt = lower_txt + operationStr;
-                selfref = lower_txt;
-                lower_txt = "";
+                if (operand[operand.Length - 1] == '.') operand = operand.Remove(operand.Length - 1);
+                operationCurrent = operand + operationStr;
+                selfref = operand;
+                operand = "";
             }
             repeatOperation = false;
         }
 
-        private string Calculate(ref double dec1, ref double dec2, ref char act, ref string upper_txt)
+        private string Calculate(ref double operand1, ref double operand2, ref char operation, ref string operationCurrent)
         {
-            switch (act)
+            switch (operation)
             {
-                case '+': return (dec1 + dec2).ToString(numberFormatInfo);
-                case '-': return (dec1 - dec2).ToString(numberFormatInfo);
-                case '*': return (dec1 * dec2).ToString(numberFormatInfo);
+                case '+': return (operand1 + operand2).ToString(numberFormatInfo);
+                case '-': return (operand1 - operand2).ToString(numberFormatInfo);
+                case '*': return (operand1 * operand2).ToString(numberFormatInfo);
                 case '/':
                     {
-                        if (dec2 == 0)
+                        if (operand2 == 0)
                         {
-                            upper_txt = "";
-                            dec1 = dec2 = 0;
-                            act = ' ';
+                            operationCurrent = "";
+                            operand1 = operand2 = 0;
+                            operation = ' ';
                             zeroDivError = false;
                             return "Деление на ноль";
                         }
-                        else return (dec1 / dec2).ToString(numberFormatInfo);
+                        else return (operand1 / operand2).ToString(numberFormatInfo);
                     }
                 default: return "0";
 
             }
         }
-        public void Point(ref string lower_txt, ref string upper_txt)
+        public void Point(ref string operand, ref string operationCurrent)
         {
             if (point)
             {
                 point = false;
-                if (upper_txt != "" && lower_txt != "")
+                if (operationCurrent != "" && operand != "")
                 {
-                    char tmp = upper_txt[upper_txt.Length - 1];
+                    char tmp = operationCurrent[operationCurrent.Length - 1];
                     if (tmp != '+' && tmp != '-' && tmp != '*' && tmp != '/')
                     {
-                        upper_txt = "";
+                        operationCurrent = "";
                         lastOperation = selfref = result = "";
                         clear = false;
-                        lower_txt = "0";
+                        operand = "0";
                     }
                 }
-                else if (upper_txt != "" && lower_txt == "") lower_txt = "0";
-                else if (!zeroDivError) lower_txt = "0";
-                lower_txt += ".";
+                else if (operationCurrent != "" && operand == "") operand = "0";
+                else if (!zeroDivError) operand = "0";
+                operand += ".";
             }
         }
-        public void Delete(ref string lower_txt, ref string upper_txt)
+        public void Delete(ref string operand, ref string operation)
         {
-            if (lower_txt.Length > 1 && lower_txt != "0")
+            if (operand.Length > 1 && operand != "0")
             {
-                if (lower_txt[lower_txt.Length - 1] == '.') point = true;
-                lower_txt = lower_txt.Remove(lower_txt.Length - 1);
+                if (operand[operand.Length - 1] == '.') point = true;
+                operand = operand.Remove(operand.Length - 1);
             }
-            else if (lower_txt.Length == 1) lower_txt = "0";
+            else if (operand.Length == 1) operand = "0";
         }
 
-        public void Total(ref string lower_txt, ref string upper_txt)
+        public void Total(ref string operand, ref string operationCurrent)
         {
-            if (!point && upper_txt != "") point = true;
-            if (lower_txt != "" && !repeatOperation && upper_txt != "")
+            if (!point && operationCurrent != "") point = true;
+            if (operand != "" && !repeatOperation && operationCurrent != "")
             {
-                operation = upper_txt[upper_txt.Length - 1];
-                operand1 = double.Parse(upper_txt.Remove(upper_txt.Length - 1), numberFormatInfo);
-                operand2 = double.Parse(lower_txt, numberFormatInfo);
-                upper_txt += lower_txt;
-                lastOperation = lower_txt;
-                lower_txt = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
+                operation = operationCurrent[operationCurrent.Length - 1];
+                operand1 = double.Parse(operationCurrent.Remove(operationCurrent.Length - 1), numberFormatInfo);
+                operand2 = double.Parse(operand, numberFormatInfo);
+                operationCurrent += operand;
+                lastOperation = operand;
+                operand = Calculate(ref operand1, ref operand2, ref operation, ref operationCurrent);
                 repeatOperation = true;
             }
-            else if (lower_txt != "" && repeatOperation && zeroDivError && clear)
+            else if (operand != "" && repeatOperation && zeroDivError && clear)
             {
-                operand1 = double.Parse(lower_txt, numberFormatInfo);
+                operand1 = double.Parse(operand, numberFormatInfo);
                 operand2 = double.Parse(lastOperation, numberFormatInfo);
-                upper_txt = lower_txt + operationStr + lastOperation;
-                lower_txt = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
+                operationCurrent = operand + operationStr + lastOperation;
+                operand = Calculate(ref operand1, ref operand2, ref operation, ref operationCurrent);
             }
-            else if (lower_txt == "")
+            else if (operand == "")
             {
                 lastOperation = selfref;
                 operand1 = double.Parse(selfref, numberFormatInfo);
                 operand2 = double.Parse(lastOperation, numberFormatInfo);
                 operation = operationStr[0];
-                upper_txt = selfref + operationStr + lastOperation;
-                lower_txt = Calculate(ref operand1, ref operand2, ref operation, ref upper_txt);
+                operationCurrent = selfref + operationStr + lastOperation;
+                operand = Calculate(ref operand1, ref operand2, ref operation, ref operationCurrent);
                 repeatOperation = true;
             }
         }
 
-        public void ClearAll(ref string lower_txt, ref string upper_txt)
+        public void ClearAll(ref string operand, ref string operationCurrent)
         {
-            upper_txt = "";
+            operationCurrent = "";
             zeroDivError = false;
-            lower_txt = "0";
+            operand = "0";
             if (!point) point = true;
             operand1 = operand2 = 0;
             operation = ' ';
             clear = false;
         }
 
-        public void Clear(ref string lower_txt)
+        public void Clear(ref string operand)
         {
-            lower_txt = "0";
+            operand = "0";
         }
     }
 }
