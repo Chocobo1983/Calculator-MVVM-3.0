@@ -9,7 +9,28 @@
         <Style.Setters>
             <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="LimeGreen"/>
-            <Setter Property="BorderBrush" Value="LimeGreen"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Green" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkGreen"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MiniButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Black"/>
         </Style.Setters>
     </Style>
     <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
@@ -24,17 +45,6 @@
         <Setter Property="Background" Value="Black"/>
         <Setter Property="Foreground" Value="LimeGreen"/>
         <Setter Property="BorderBrush" Value="LimeGreen"/>
-        
     </Style>
-    <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type ButtonBase}">
-        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
-            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-        </Border>
-        <ControlTemplate.Triggers>            
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" TargetName="border" Value="DarkGreen"/>
-            </Trigger>        
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
+    
 </ResourceDictionary>

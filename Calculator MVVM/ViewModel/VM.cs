@@ -7,115 +7,76 @@ namespace Calculator_MVVM.ViewModel
         
         string _operand = "0";
         string _operation = "";
-        Calculation calculator = new Calculation();
+        Calculation _calculator = new Calculation();
         public string Operand { get { return _operand ?? "0"; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation ?? ""; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-        public RelayCommand command { get; private set; }
+        RelayCommand _operandCommand;
+        RelayCommand _operationCommand;
+        RelayCommand _pointCommand;
+        RelayCommand _deleteCommand;
+        RelayCommand _totalCommand;
+        RelayCommand _clearAllCommand;
+        RelayCommand _clearCommand;
+        public VM()
+        {
+            _operandCommand = new RelayCommand(OperandInput);
+            _operationCommand = new RelayCommand(OperationInput);
+            _pointCommand = new RelayCommand(PointInput);
+            _deleteCommand = new RelayCommand(DeleteUsing);
+            _totalCommand = new RelayCommand(TotalUsing);
+            _clearAllCommand = new RelayCommand(ClearAll);
+            _clearCommand = new RelayCommand(Clear);
+        }
         #region PrivateMethods
-        private void OperandInput(object parameter)
+        private void OperandInput(object o)
         {
-            calculator.Operand(parameter.ToString(), ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.Operand(o.ToString());
+            Update();
         }
-        private void OperationInput(object parameter)
+        private void OperationInput(object o)
         {
-            calculator.Operation(parameter.ToString(), ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.Operation(o.ToString());
+            Update();
         }
-        private void PointInput(object parameter)
+        private void PointInput(object o)
         {
-            calculator.Point(ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.Point();
+            Update();
         }
-        private void DeleteUsing(object parameter)
+        private void DeleteUsing(object o)
         {
-            calculator.Delete(ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.Delete();
+            Update();
         }
         private void TotalUsing(object o)
         {
-            calculator.Total(ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.Total();
+            Update();
         }
         private void ClearAll(object o)
         {
-            calculator.ClearAll(ref _operand, ref _operation);
-            Operand = _operand;
-            Operation = _operation;
+            _calculator.ClearAll();
+            Update();
+        }
+        private void Update()
+        {
+            Operand = _calculator.Data;
+            Operation = _calculator.InterMediateData;
         }
         private void Clear(object o)
         {
-            calculator.Clear(ref _operand);
-            Operand = _operand;
+            _calculator.Clear();
+            Update();
         }
         #endregion
         #region Commands
-        public ICommand OperandCommand
-        {
-            get
-            {
-                command = new RelayCommand(OperandInput);
-                return command;
-            }
-        }
-
-        public ICommand OperationCommand
-        {
-            get
-            {
-                command = new RelayCommand(OperationInput);
-                return command;
-            }
-        }
-
-        public ICommand PointCommand
-        {
-            get
-            {
-                command = new RelayCommand(PointInput);
-                return command;
-            }
-        }
-
-        public ICommand DeleteCommand
-        {
-            get
-            {
-                command = new RelayCommand(DeleteUsing);
-                return command;
-            }
-        }
-
-        public ICommand TotalCommand
-        {
-            get
-            {
-                command = new RelayCommand(TotalUsing);
-                return command;
-            }
-        }
-
-        public ICommand ClearAllCommand
-        {
-            get
-            {
-                command = new RelayCommand(ClearAll);
-                return command;
-            }
-        }
-        public ICommand ClearCommand
-        {
-            get
-            {
-                command = new RelayCommand(Clear);
-                return command;
-            }
-        }
+        public ICommand OperandCommand { get { return _operandCommand; } }
+        public ICommand OperationCommand { get { return _operationCommand; } }
+        public ICommand PointCommand { get { return _pointCommand; } }
+        public ICommand DeleteCommand { get { return _deleteCommand; } }
+        public ICommand TotalCommand { get { return _totalCommand; } }
+        public ICommand ClearAllCommand { get { return _clearAllCommand; } }
+        public ICommand ClearCommand { get { return _clearCommand; } }
         #endregion
 
 

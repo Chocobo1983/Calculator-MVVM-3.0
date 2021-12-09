@@ -12,13 +12,13 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" MaxHeight="20"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -27,47 +27,47 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBox Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
-        <TextBox Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,5,54" TextWrapping="Wrap" MinHeight="30" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1"/>
-        <Button Command="{Binding ClearCommand}" Template="{DynamicResource ButtonTemplate}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
-        <Button Command="{Binding ClearAllCommand}" Template="{DynamicResource ButtonTemplate}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
-        <Button Command="{Binding DeleteCommand}" Template="{DynamicResource ButtonTemplate}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="/" Grid.Row="2" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="7" Grid.Row="3" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="8" Grid.Row="3" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Grid.Row="3" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Grid.Row="3" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Grid.Row="4" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Grid.Row="4" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Grid.Row="4" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Grid.Row="5" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="2" Grid.Row="5" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="3" Grid.Row="5" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="+" Grid.Row="5" Grid.Column="3"/>
-        <Button Command="{Binding PointCommand}" Template="{DynamicResource ButtonTemplate}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Grid.Row="6" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" Template="{DynamicResource ButtonTemplate}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
-        <Button Command="{Binding TotalCommand}" Template="{DynamicResource ButtonTemplate}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3" FlowDirection="RightToLeft">
-            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_Close" Height="20" Width="20" BorderThickness="0" Click="btn_Close_Click">
-                <Image Source="\rss\gtk-red.png"/>
+        <TextBox Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1" Height="40" VerticalAlignment="Top"/>
+        <Button Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
+        <Button Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
+        <Button Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
+        <Button Command="{Binding OperationCommand}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="/" Grid.Row="2" Grid.Column="3"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="7" Grid.Row="3" Grid.Column="0"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="8" Grid.Row="3" Grid.Column="1"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Grid.Row="3" Grid.Column="2"/>
+        <Button Command="{Binding OperationCommand}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Grid.Row="3" Grid.Column="3"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Grid.Row="4" Grid.Column="0"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Grid.Row="4" Grid.Column="2"/>
+        <Button Command="{Binding OperationCommand}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Grid.Row="4" Grid.Column="3"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Grid.Row="5" Grid.Column="0"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="2" Grid.Row="5" Grid.Column="1"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="3" Grid.Row="5" Grid.Column="2"/>
+        <Button Command="{Binding OperationCommand}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="+" Grid.Row="5" Grid.Column="3"/>
+        <Button Command="{Binding PointCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Grid.Row="6" Grid.Column="0"/>
+        <Button Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
+        <Button Command="{Binding TotalCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3">
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_hide" Width="20" Height="20" BorderThickness="0" Click="btn_hide_Click">
+                <Image Source="rss/gtk-media-record_green.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_restore" Width="20" Height="20" BorderThickness="0" Click="btn_restore_Click">
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_restore" Click="btn_restore_Click">
                 <Image Source="\rss\gtk-media-record_yellow.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_hide" Width="20" Height="20" BorderThickness="0" Click="btn_hide_Click">
-                <Image Source="rss/gtk-media-record_green.png"/>
+            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="btn_Close" Click="btn_Close_Click">
+                <Image Source="\rss\gtk-red.png"/>
             </Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" x:Name="btn_logo" Width="20" Height="20" BorderThickness="0">
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}">
                 <Image Source="rss/Calculator.png"/>
             </Button>
-            <Button Style="{DynamicResource ButtonStyle}" x:Name="btn_settings" Width="20" Height="20" BorderThickness="0">
+            <Button Style="{DynamicResource ButtonStyle}">
                 <Image Source="rss/Settings.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard>
-                            <Storyboard TargetProperty="Height" TargetName="set_panel">
+                            <Storyboard TargetProperty="Height" TargetName="setPanel">
                                 <DoubleAnimation From="0" To="450" AutoReverse="False" Duration="0:0:0.3"/>
                             </Storyboard>
                         </BeginStoryboard>
@@ -75,22 +75,22 @@
                 </Button.Triggers>
             </Button>
         </StackPanel>
-        <WrapPanel Style="{DynamicResource ResourceKey=WrapPanelStyle}" Name="set_panel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical">
-            <Button Style="{DynamicResource ButtonStyle}" Name="return_btn" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Width="20" Height="20">
+        <WrapPanel Style="{DynamicResource ResourceKey=WrapPanelStyle}" Name="setPanel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical">
+            <Button Style="{DynamicResource ButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Width="20" Height="20">
                 <Image Source="rss/arrow-up.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard>
-                            <Storyboard TargetProperty="Height" TargetName="set_panel">
+                            <Storyboard TargetProperty="Height" TargetName="setPanel">
                                 <DoubleAnimation From="450" To="0" AutoReverse="False" Duration="0:0:0.3"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  Name="matrix_rb" Content="Matrix theme" Margin="20,0,0,0" IsChecked="True" Checked="matrix_rb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="snowhite_rb" Content="Blue white theme" Margin="20,10,0,0" Checked="snowhite_rb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="bloody_rb" Content="Red theme" Margin="20,10,0,0" Checked="bloody_rb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  x:Name="matrixRb" Content="Matrix theme" Margin="20,0,0,0" IsChecked="True" Checked="matrixRb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="blueWhiteRb" Content="Blue white theme" Margin="20,10,0,0" Checked="blueWhiteRb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="redRb" Content="Red theme" Margin="20,10,0,0" Checked="redRb_Checked"/>
         </WrapPanel>
     </Grid>
 </Window>

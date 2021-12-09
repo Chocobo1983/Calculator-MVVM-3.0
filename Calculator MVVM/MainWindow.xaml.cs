@@ -30,9 +30,9 @@ namespace Calculator_MVVM
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(res);
         }
-        private void matrix_rb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.Xaml");
-        private void snowhite_rb_Checked(object sender, RoutedEventArgs e) => Connect("BlueWhite.xaml");
-        private void bloody_rb_Checked(object sender, RoutedEventArgs e) => Connect("Red.xaml");
+        private void matrixRb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.Xaml");
+        private void blueWhiteRb_Checked(object sender, RoutedEventArgs e) => Connect("BlueWhite.xaml");
+        private void redRb_Checked(object sender, RoutedEventArgs e) => Connect("Red.xaml");
 
         #endregion
 
@@ -45,6 +45,7 @@ namespace Calculator_MVVM
             else this.WindowState = WindowState.Normal;
         }
         private void btn_hide_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
-        #endregion
+
+        #endregion       
     }
 }
