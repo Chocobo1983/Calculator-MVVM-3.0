@@ -27,12 +27,13 @@ namespace Calculator_MVVM
             style = "styles/" + style;
             Uri uri = new Uri(style, UriKind.Relative);
             ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(uri);
-            Application.Current.Resources.Clear();
+            if(Application.Current.Resources.MergedDictionaries.Count > 1) Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
             Application.Current.Resources.MergedDictionaries.Add(res);
         }
-        private void matrixRb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.Xaml");
+        private void matrixRb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.xaml");
         private void blueWhiteRb_Checked(object sender, RoutedEventArgs e) => Connect("BlueWhite.xaml");
         private void redRb_Checked(object sender, RoutedEventArgs e) => Connect("Red.xaml");
+        private void defaultRb_Checked(object sender, RoutedEventArgs e) => Connect("Default.xaml");
 
         #endregion
 
@@ -46,6 +47,9 @@ namespace Calculator_MVVM
         }
         private void Minimize_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
 
-        #endregion       
+        #endregion
+
+       
+
     }
 }

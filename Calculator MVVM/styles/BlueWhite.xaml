@@ -1,48 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="WindowStyle" TargetType="Window">
-        <Setter Property="Background" Value="DarkBlue" />
-        <Setter Property="Opacity" Value="0.8" />
-    </Style>
-    <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource ResourceKey=DefaultButton}">
-        <Style.Setters>
-            <Setter Property="Background" Value="DarkBlue"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="OrangeRed" BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style.Setters>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="RoyalBlue"/>
-            </Trigger>
-        </Style.Triggers>        
-    </Style>
-    <Style x:Key="MiniButtonStyle" TargetType="Button">
-        <Style.Setters>
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Background" Value="DarkBlue"/>
-        </Style.Setters>
-    </Style>
-    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
-        <Setter Property="Background" Value="DarkBlue"/>
-        <Setter Property="Foreground" Value="White"/>
-    </Style>
-    <Style x:Key="WrapPanelStyle" TargetType="WrapPanel">
-        <Setter Property="Background" Value="DarkBlue"/>
-        <Setter Property="Opacity" Value="0.8"/>
-    </Style>
-    <Style x:Key="TextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource ResourceKey=DefaultTextBox}">
-        <Setter Property="Background" Value="DarkBlue"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderBrush" Value="Tomato"/>
-    </Style>    
+
+    <!--Here you can change the colors for this theme.-->
+    <SolidColorBrush Color="DarkBlue" x:Key="BgBrush"/>
+    <SolidColorBrush Color="White" x:Key="FgBrush"/>
+    <SolidColorBrush Color="RoyalBlue" x:Key="IsPressedBrush"/>
+    
 </ResourceDictionary>

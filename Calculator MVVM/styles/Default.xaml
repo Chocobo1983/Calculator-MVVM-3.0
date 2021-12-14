@@ -1,12 +1,61 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="DefaultButton" TargetType="Button">
+
+
+    <!--Here you can change the colors for this theme.-->
+    <SolidColorBrush Color="White" x:Key="BgBrush"/>
+    <SolidColorBrush Color="Black" x:Key="FgBrush"/>
+    <SolidColorBrush Color="LightBlue" x:Key="IsPressedBrush"/>
+
+
+    <Style x:Key="WindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource FgBrush}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource FgBrush}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource IsPressedBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MiniButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="{DynamicResource FgBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FgBrush}"/>
+    </Style>
+    <Style x:Key="WrapPanelStyle" TargetType="WrapPanel">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
+        <Setter Property="Opacity" Value="0.8"/>
+    </Style>
+    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource FgBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Margin" Value="0"/>
-    </Style>
-    <Style x:Key="DefaultTextBox" TargetType="TextBox">
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-    </Style>
+    </Style>       
 </ResourceDictionary>

@@ -88,9 +88,10 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  x:Name="matrixRb" Content="Matrix theme" Margin="20,0,0,0" IsChecked="True" Checked="matrixRb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  x:Name="matrixRb" Content="Matrix theme" Margin="20,0,0,0" Checked="matrixRb_Checked"/>
             <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="blueWhiteRb" Content="Blue white theme" Margin="20,10,0,0" Checked="blueWhiteRb_Checked"/>
             <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="redRb" Content="Red theme" Margin="20,10,0,0" Checked="redRb_Checked"/>
+            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" x:Name="defaultRb" Content="Default theme" Margin="20,10,0,0" IsChecked="True" Checked="defaultRb_Checked"/>
         </WrapPanel>
     </Grid>
 </Window>
