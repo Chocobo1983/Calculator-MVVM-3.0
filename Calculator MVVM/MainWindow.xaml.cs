@@ -38,7 +38,7 @@ namespace Calculator_MVVM
         #endregion
 
         #region WindowControl
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e) => DragMove();
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {try { DragMove(); } catch (Exception) { } }
         private void Close_Click(object sender, RoutedEventArgs e) => Close();
         private void Maximize_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +47,7 @@ namespace Calculator_MVVM
         }
         private void Minimize_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
 
-        #endregion
-
-       
+        #endregion      
 
     }
 }
