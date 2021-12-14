@@ -9,8 +9,8 @@ namespace Calculator_MVVM.ViewModel
     {
 
         public static readonly NumberFormatInfo _numberFormatInfo = NumberFormatInfo.InvariantInfo;
-        //Change InvariantInfo for NumberFormatInfo.CurrentInfo if you wish to use your local numbers formatting
-        
+        //Change NumberFormatInfo.InvariantInfo for NumberFormatInfo.CurrentInfo if you wish to use your local numbers formatting
+
         public string Data { get; set; }
         public void Total(string operand1, string operand2, string operation)
         {
