@@ -6,8 +6,7 @@ namespace Calculator_MVVM.ViewModel
 {
     internal class VM : VMbase
     {
-        string _operand = "0";
-        string _operation;
+        string _operand = "0", _operation;
         bool _calculationDone = false, _error = false, _calculationRepeat=false;
         Visibility _visibility = Visibility.Hidden;
         Calculation _calculator = new Calculation();
@@ -35,9 +34,8 @@ namespace Calculator_MVVM.ViewModel
         private void OperandInput(object o)
         {
             if (_error || _calculationDone) ClearAll(o);
-            string operand = o.ToString();
-            if (Operand == "0") Operand = operand;
-            else Operand += operand;
+            if (Operand == "0") Operand = o.ToString();
+            else Operand += o.ToString();
         }
         private void PointInput(object o)
         {
@@ -76,12 +74,8 @@ namespace Calculator_MVVM.ViewModel
             if (!_calculationDone && Operand != null) _calculator.Operand2 = double.Parse(Operand, Calculation._numberFormatInfo);
             else if (_calculationDone && Operand != null) _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
             else _calculator.Operand2 = null;
-            double? result = _calculator.Equal();
-            if (result == null) 
-            { 
-                _error = true; 
-                Visibility = Visibility.Visible; 
-            }
+            double? result = _calculator.Calculate();
+            if (result == null) { _error = true; Visibility = Visibility.Visible; }
             else Operand = result?.ToString(Calculation._numberFormatInfo);
             Operation = null;
             _calculationRepeat = false;
@@ -113,6 +107,5 @@ namespace Calculator_MVVM.ViewModel
         public ICommand ClearAllCommand { get { return _clearAllCommand; } }
         public ICommand ClearCommand { get { return _clearCommand; } }
         #endregion
-    }
-    
+    }    
 }

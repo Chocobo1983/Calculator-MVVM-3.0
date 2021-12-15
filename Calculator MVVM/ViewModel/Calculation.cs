@@ -1,22 +1,16 @@
-﻿using System;
-using System.Data;
-using System.Globalization;
-using System.Windows;
-
+﻿using System.Globalization;
 namespace Calculator_MVVM.ViewModel
 {
     internal class Calculation
     {
-
         public static readonly NumberFormatInfo _numberFormatInfo = NumberFormatInfo.InvariantInfo;
         //Change NumberFormatInfo.InvariantInfo for NumberFormatInfo.CurrentInfo if you wish to use your local numbers formatting
         public double? Operand1 { get; set; } 
         public double? Operand2 { get; set; }
         public char? Operator { get; set; }
-        
-
-        private double? Calculate()
+        public double? Calculate()
         {
+            Operand2 = Operand2 ?? Operand1;
             switch (Operator)
             {
                 case '+': return Operand1 + Operand2;
@@ -26,12 +20,5 @@ namespace Calculator_MVVM.ViewModel
                 default: return null;
             }           
         }
-        public double? Equal()
-        {
-            Operand2 = Operand2 ?? Operand1;
-            return Calculate();
-
-        }
-
     }
 }
