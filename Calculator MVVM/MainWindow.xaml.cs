@@ -27,7 +27,7 @@ namespace Calculator_MVVM
             style = "styles/" + style;
             Uri uri = new Uri(style, UriKind.Relative);
             ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(uri);
-            if(Application.Current.Resources.MergedDictionaries.Count > 1) Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
+            if (Application.Current.Resources.MergedDictionaries.Count > 1) Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
             Application.Current.Resources.MergedDictionaries.Add(res);
         }
         private void matrixRb_Checked(object sender, RoutedEventArgs e) => Connect("DarkGreen.xaml");
@@ -38,7 +38,7 @@ namespace Calculator_MVVM
         #endregion
 
         #region WindowControl
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {try { DragMove(); } catch (Exception) { } }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) { if(e.LeftButton==MouseButtonState.Pressed) DragMove(); }
         private void Close_Click(object sender, RoutedEventArgs e) => Close();
         private void Maximize_Click(object sender, RoutedEventArgs e)
         {

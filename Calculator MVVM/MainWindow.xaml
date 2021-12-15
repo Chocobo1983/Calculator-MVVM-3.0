@@ -28,6 +28,7 @@
         </Grid.ColumnDefinitions>
         <TextBox Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
         <TextBox Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1" Height="40" VerticalAlignment="Top"/>
+        <TextBox Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding Visibility}"/>
         <Button Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
         <Button Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
         <Button Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
