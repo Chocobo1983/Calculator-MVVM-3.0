@@ -68,24 +68,24 @@
         <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
         <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
         <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding ErrorFieldVisibility, Converter={StaticResource BoolToVisibilityConverter} }" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
-        <Button Focusable="False" Content="CE" Grid.Row="2" Grid.Column="0" Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="C" Grid.Row="2" Grid.Column="1" Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="&lt;" Grid.Row="2" Grid.Column="2" Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="/" Grid.Row="2" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="7" Grid.Row="3" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="8" Grid.Row="3" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="9" Grid.Row="3" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="*" Grid.Row="3" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="4" Grid.Row="4" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="5" Grid.Row="4" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="6" Grid.Row="4" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="-" Grid.Row="4" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="1" Grid.Row="5" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="2" Grid.Row="5" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="3" Grid.Row="5" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="+" Grid.Row="5" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="." Grid.Row="6" Grid.Column="0" Command="{Binding PointCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
-        <Button Focusable="False" Content="0" Grid.Row="6" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="CE" Grid.Row="2" Grid.Column="0" Focusable="False" Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="C" Grid.Row="2" Grid.Column="1" Focusable="False" Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="&lt;" Grid.Row="2" Grid.Column="2" Focusable="False" Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="/" Grid.Row="2" Grid.Column="3" Focusable="False" Command="{Binding OperationCommand}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="7" Grid.Row="3" Grid.Column="0" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="8" Grid.Row="3" Grid.Column="1" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="9" Grid.Row="3" Grid.Column="2" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="*" Grid.Row="3" Grid.Column="3" Focusable="False" Command="{Binding OperationCommand}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="4" Grid.Row="4" Grid.Column="0" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="5" Grid.Row="4" Grid.Column="1" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="6" Grid.Row="4" Grid.Column="2" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="-" Grid.Row="4" Grid.Column="3" Focusable="False" Command="{Binding OperationCommand}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="1" Grid.Row="5" Grid.Column="0" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="2" Grid.Row="5" Grid.Column="1" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="3" Grid.Row="5" Grid.Column="2" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="+" Grid.Row="5" Grid.Column="3" Focusable="False" Command="{Binding OperationCommand}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="." Grid.Row="6" Grid.Column="0" Focusable="False" Command="{Binding PointCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Content="0" Grid.Row="6" Grid.Column="1" Focusable="False" Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
         <Button Focusable="True"  Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding TotalCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3">
             <Button x:Name="Minimize" Click="Minimize_Click" Style="{DynamicResource ResourceKey=MiniButtonStyle}">
