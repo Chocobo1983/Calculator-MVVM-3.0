@@ -46,7 +46,8 @@
         <KeyBinding Command="{Binding OperationCommand}" CommandParameter="/" Key="Oem2"/>
         <KeyBinding Command="{Binding TotalCommand}" Key="Enter"/>
         <KeyBinding Command="{Binding DeleteCommand}" Key="Backspace"/>
-        <KeyBinding Command="{Binding ClearAllCommand}" Key="Escape"/>        
+        <KeyBinding Command="{Binding ClearAllCommand}" Key="Escape"/>
+        <KeyBinding Command="{Binding ClearCommand}" Key="Delete"/>
     </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
