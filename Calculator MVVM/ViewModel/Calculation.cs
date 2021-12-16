@@ -10,7 +10,7 @@ namespace Calculator_MVVM.ViewModel
         public char? Operator { get; set; }
         public double? Calculate()
         {
-            Operand2 = Operand2 ?? Operand1;
+            if (Operand1.HasValue) Operand2 = Operand2 ?? Operand1;
             switch (Operator)
             {
                 case '+': return Operand1 + Operand2;
@@ -20,5 +20,7 @@ namespace Calculator_MVVM.ViewModel
                 default: return null;
             }           
         }
+        public void Reset() => Operand1 = Operand2 = Operator = null;
+       
     }
 }

@@ -6,10 +6,48 @@
         xmlns:viewmodel="clr-namespace:Calculator_MVVM.ViewModel"
         xmlns:local="clr-namespace:Calculator_MVVM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300" AllowsTransparency="True" Style="{DynamicResource ResourceKey=WindowStyle}" WindowStyle="None" MouseDown="Window_MouseDown">
+        Title="MainWindow" Height="450" Width="300" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Style="{DynamicResource ResourceKey=WindowStyle}">
     <Window.DataContext>
         <viewmodel:VM/>
     </Window.DataContext>
+    <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="0" Key="NumPad0"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="1" Key="NumPad1"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="2" Key="NumPad2"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="3" Key="NumPad3"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="4" Key="NumPad4"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="5" Key="NumPad5"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="6" Key="NumPad6"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="7" Key="NumPad7"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="8" Key="NumPad8"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="9" Key="NumPad9"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="0" Key="D0"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="1" Key="D1"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="2" Key="D2"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="3" Key="D3"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="4" Key="D4"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="5" Key="D5"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="6" Key="D6"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="7" Key="D7"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="8" Key="D8"/>
+        <KeyBinding Command="{Binding OperandCommand}" CommandParameter="9" Key="D9"/>
+        <KeyBinding Command="{Binding PointCommand}" Key="Decimal"/>
+        <KeyBinding Command="{Binding PointCommand}" Key="OemComma"/>
+        <KeyBinding Command="{Binding PointCommand}" Key="OemPeriod"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="+" Key="OemPlus"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="+" Key="Add"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="-" Key="OemMinus"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="-" Key="Subtract"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="*" Key="Multiply"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="/" Key="Divide"/>
+        <KeyBinding Command="{Binding OperationCommand}" CommandParameter="/" Key="Oem2"/>
+        <KeyBinding Command="{Binding TotalCommand}" Key="Enter"/>
+        <KeyBinding Command="{Binding DeleteCommand}" Key="Backspace"/>
+        <KeyBinding Command="{Binding ClearAllCommand}" Key="Escape"/>        
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -26,36 +64,36 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" BorderThickness="0,1,0,0"/>
-        <TextBox Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1" Height="40" VerticalAlignment="Top"/>
-        <TextBox Style="{DynamicResource ResourceKey=TextBoxStyle}" IsReadOnly="True" Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" BorderThickness="0,0,0,1" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding Visibility}"/>
-        <Button Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="CE" Grid.Row="2" Grid.Column="0"/>
-        <Button Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="C" Grid.Row="2" Grid.Column="1"/>
-        <Button Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="&lt;" Grid.Row="2" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="/" Grid.Row="2" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="7" Grid.Row="3" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="8" Grid.Row="3" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="9" Grid.Row="3" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="*" Grid.Row="3" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="4" Grid.Row="4" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="5" Grid.Row="4" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="6" Grid.Row="4" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="-" Grid.Row="4" Grid.Column="3"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="1" Grid.Row="5" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="2" Grid.Row="5" Grid.Column="1"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="3" Grid.Row="5" Grid.Column="2"/>
-        <Button Command="{Binding OperationCommand}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="+" Grid.Row="5" Grid.Column="3"/>
-        <Button Command="{Binding PointCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="." Grid.Row="6" Grid.Column="0"/>
-        <Button Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="0" Grid.Row="6" Grid.Column="1"/>
-        <Button Command="{Binding TotalCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}" Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
+        <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
+        <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding ErrorFieldVisibility, Converter={StaticResource BoolToVisibilityConverter} }" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
+        <Button Focusable="False" Content="CE" Grid.Row="2" Grid.Column="0" Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="C" Grid.Row="2" Grid.Column="1" Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="&lt;" Grid.Row="2" Grid.Column="2" Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="/" Grid.Row="2" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="/" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="7" Grid.Row="3" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="7" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="8" Grid.Row="3" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="8" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="9" Grid.Row="3" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="9" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="*" Grid.Row="3" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="*" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="4" Grid.Row="4" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="4" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="5" Grid.Row="4" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="5" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="6" Grid.Row="4" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="6" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="-" Grid.Row="4" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="-" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="1" Grid.Row="5" Grid.Column="0" Command="{Binding OperandCommand}" CommandParameter="1" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="2" Grid.Row="5" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="2" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="3" Grid.Row="5" Grid.Column="2" Command="{Binding OperandCommand}" CommandParameter="3" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="+" Grid.Row="5" Grid.Column="3" Command="{Binding OperationCommand}" CommandParameter="+" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="." Grid.Row="6" Grid.Column="0" Command="{Binding PointCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="False" Content="0" Grid.Row="6" Grid.Column="1" Command="{Binding OperandCommand}" CommandParameter="0" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
+        <Button Focusable="True"  Content="=" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding TotalCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="3">
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Minimize" Click="Minimize_Click">
+            <Button x:Name="Minimize" Click="Minimize_Click" Style="{DynamicResource ResourceKey=MiniButtonStyle}">
                 <Image Source="rss/gtk-media-record_green.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Maximize" Click="Maximize_Click">
+            <Button x:Name="Maximize" Click="Maximize_Click" Style="{DynamicResource ResourceKey=MiniButtonStyle}">
                 <Image Source="\rss\gtk-media-record_yellow.png"/>
             </Button>
-            <Button Style="{DynamicResource ResourceKey=MiniButtonStyle}" x:Name="Close" Click="Close_Click">
+            <Button x:Name="Close" Click="Close_Click" Style="{DynamicResource ResourceKey=MiniButtonStyle}">
                 <Image Source="\rss\gtk-red.png"/>
             </Button>
         </StackPanel>
@@ -76,8 +114,8 @@
                 </Button.Triggers>
             </Button>
         </StackPanel>
-        <WrapPanel Style="{DynamicResource ResourceKey=WrapPanelStyle}" Name="setPanel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical">
-            <Button Style="{DynamicResource MiniButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20">
+        <WrapPanel Name="setPanel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical" Style="{DynamicResource ResourceKey=WrapPanelStyle}">
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Style="{DynamicResource MiniButtonStyle}">
                 <Image Source="rss/arrow-up.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
@@ -89,10 +127,10 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"  x:Name="matrixRb" Content="Matrix theme" Margin="20,0,0,0" Checked="matrixRb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="blueWhiteRb" Content="Blue white theme" Margin="20,10,0,0" Checked="blueWhiteRb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" Name="redRb" Content="Red theme" Margin="20,10,0,0" Checked="redRb_Checked"/>
-            <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" x:Name="defaultRb" Content="Default theme" Margin="20,10,0,0" IsChecked="True" Checked="defaultRb_Checked"/>
+            <RadioButton x:Name="matrixRb" Content="Matrix theme" Margin="20,0,0,0" Checked="matrixRb_Checked" Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
+            <RadioButton Name="blueWhiteRb" Content="Blue white theme" Margin="20,10,0,0" Checked="blueWhiteRb_Checked" Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
+            <RadioButton Name="redRb" Content="Red theme" Margin="20,10,0,0" Checked="redRb_Checked" Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
+            <RadioButton x:Name="defaultRb" Content="Default theme" Margin="20,10,0,0" IsChecked="True" Checked="defaultRb_Checked" Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
         </WrapPanel>
     </Grid>
 </Window>

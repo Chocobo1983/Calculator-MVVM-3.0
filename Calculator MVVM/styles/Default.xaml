@@ -51,10 +51,9 @@
         <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
         <Setter Property="Opacity" Value="0.8"/>
     </Style>
-    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+    <Style x:Key="TextBoxStyle" TargetType="TextBlock">
         <Setter Property="Background" Value="{DynamicResource BgBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource FgBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>       

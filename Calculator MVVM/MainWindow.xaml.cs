@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculator_MVVM.ViewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Calculator_MVVM
 {
@@ -36,7 +38,6 @@ namespace Calculator_MVVM
         private void defaultRb_Checked(object sender, RoutedEventArgs e) => Connect("Default.xaml");
 
         #endregion
-
         #region WindowControl
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) { if(e.LeftButton==MouseButtonState.Pressed) DragMove(); }
         private void Close_Click(object sender, RoutedEventArgs e) => Close();
@@ -47,7 +48,15 @@ namespace Calculator_MVVM
         }
         private void Minimize_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
 
-        #endregion      
 
+
+
+
+
+
+
+
+        #endregion
+               
     }
 }

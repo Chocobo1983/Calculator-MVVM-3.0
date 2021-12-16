@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Calculator_MVVM.ViewModel
@@ -7,12 +9,11 @@ namespace Calculator_MVVM.ViewModel
     internal class VM : VMbase
     {
         string _operand = "0", _operation;
-        bool _calculationDone = false, _error = false, _calculationRepeat=false;
-        Visibility _visibility = Visibility.Hidden;
+        bool _IsCalculationDone = false, _hasError = false, _IsCalculationRepeat=false;
         Calculation _calculator = new Calculation();
         public string Operand { get { return _operand; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-        public Visibility Visibility { get { return _visibility; } set { _visibility = value; OnPropertyChanged(nameof(Visibility)); } }
+        public bool ErrorFieldVisibility { get { return _hasError; } set { if (value == _hasError) return; _hasError = value; OnPropertyChanged(nameof(ErrorFieldVisibility)); } }
         RelayCommand _operandCommand;
         RelayCommand _operationCommand;
         RelayCommand _pointCommand;
@@ -33,67 +34,65 @@ namespace Calculator_MVVM.ViewModel
         #region PrivateMethods
         private void OperandInput(object o)
         {
-            if (_error || _calculationDone) ClearAll(o);
+            if (_hasError || _IsCalculationDone) ClearAll(o);
             if (Operand == "0") Operand = o.ToString();
             else Operand += o.ToString();
         }
         private void PointInput(object o)
         {
-            if (_error || _calculationDone) ClearAll(o);
+            if (_hasError || _IsCalculationDone) ClearAll(o);
             else if (Operand == null) Operand = "0";
             else if (Operand.Contains(Calculation._numberFormatInfo.NumberDecimalSeparator)) return;
             Operand += Calculation._numberFormatInfo.NumberDecimalSeparator;
         }
         private void OperationInput(object o)
         {
-            if (_error) ClearAll(o);
+            if (_hasError) ClearAll(o);
             char Operator = o.ToString()[0];
-            _calculationDone = false;            
-            if (!_calculationRepeat)
+            _IsCalculationDone = false;            
+            if (!_IsCalculationRepeat)
             {
                 _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
-                Operation = Operand + Operator;
+                Operation = _calculator.Operand1.ToString() + Operator;
                 Operand = null;
-                _calculationRepeat = true;
+                _IsCalculationRepeat = true;
             }
-            else if (_calculationRepeat && Operand == null) Operation = Operation.Remove(Operation.Length - 1) + Operator;
+            else if (_IsCalculationRepeat && Operand == null) Operation = Operation.Remove(Operation.Length - 1) + Operator;
             else
             {
                 Equal(o);
                 _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
-                Operation = Operand + Operator;
+                Operation = _calculator.Operand1.ToString() + Operator;
                 Operand = null;
-                _calculationRepeat = true;
-                _calculationDone = false;
+                _IsCalculationRepeat = true;
+                _IsCalculationDone = false;
             }
             _calculator.Operator = Operator;
         }
-        private void Equal(object o)
+        private void Equal(object o)               
         {
-            if (Operation == null && !_calculationDone) return;
-            if (!_calculationDone && Operand != null) _calculator.Operand2 = double.Parse(Operand, Calculation._numberFormatInfo);
-            else if (_calculationDone && Operand != null) _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
+            if (Operation == null && !_IsCalculationDone) return;
+            if (!_IsCalculationDone && Operand != null) _calculator.Operand2 = double.Parse(Operand, Calculation._numberFormatInfo);
+            else if (_IsCalculationDone && Operand != null) _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
             else _calculator.Operand2 = null;
             double? result = _calculator.Calculate();
-            if (result == null) { _error = true; Visibility = Visibility.Visible; }
+            if (result == null) ErrorFieldVisibility = true; 
             else Operand = result?.ToString(Calculation._numberFormatInfo);
             Operation = null;
-            _calculationRepeat = false;
-            _calculationDone = true;
+            _IsCalculationRepeat = false;
+            _IsCalculationDone = true;
         }
         private void DeleteChar(object o)
         {
-            if (_error || _calculationDone) ClearAll(o);
+            if (_hasError || _IsCalculationDone) ClearAll(o);
             if (Operand?.Length > 1) Operand = Operand.Remove(Operand.Length - 1);
             else Operand = "0";
         }
-        private void Update() => _calculator.Operand1 = _calculator.Operand2 = _calculator.Operator = null;
         private void ClearAll(object o)
         {
             Operation = null;
-            _error = _calculationDone = _calculationRepeat = false;
-            Visibility = Visibility.Hidden;
-            Update();
+            ErrorFieldVisibility = _IsCalculationDone = _IsCalculationRepeat = false;
+            _calculator.Reset();
             Clear(o);
         }
         private void Clear(object o) => Operand = "0";
