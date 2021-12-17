@@ -67,7 +67,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Grid.Row="1" Grid.ColumnSpan="4" ClipToBounds="True" TextAlignment="Right" FontSize="14" Text="{Binding Operation}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
         <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="{Binding Operand}" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
-        <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding ErrorFieldVisibility, Converter={StaticResource BoolToVisibilityConverter} }" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
+        <TextBlock Margin="0,30,0,54" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="4" TextAlignment="Right" Grid.RowSpan="2" Height="40" VerticalAlignment="Top" Text="Result is undefined" Visibility="{Binding HasError, Converter={StaticResource BoolToVisibilityConverter} }" Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
         <Button Content="CE" Grid.Row="2" Grid.Column="0" Focusable="False" Command="{Binding ClearCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
         <Button Content="C" Grid.Row="2" Grid.Column="1" Focusable="False" Command="{Binding ClearAllCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
         <Button Content="&lt;" Grid.Row="2" Grid.Column="2" Focusable="False" Command="{Binding DeleteCommand}" Style="{DynamicResource ResourceKey=ButtonStyle}"/>
@@ -99,10 +99,10 @@
             </Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Style="{DynamicResource ResourceKey=ButtonStyle}">
+            <Button Style="{DynamicResource ResourceKey=ButtonStyle}" Focusable="False">
                 <Image Source="rss/Calculator.png"/>
             </Button>
-            <Button Style="{DynamicResource ButtonStyle}">
+            <Button Style="{DynamicResource ButtonStyle}" Focusable="False">
                 <Image Source="rss/Settings.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
@@ -116,7 +116,7 @@
             </Button>
         </StackPanel>
         <WrapPanel Name="setPanel" Width="300" Height="0" Grid.ColumnSpan="4" Grid.RowSpan="7" Orientation="Vertical" Style="{DynamicResource ResourceKey=WrapPanelStyle}">
-            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Style="{DynamicResource MiniButtonStyle}">
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,20" Style="{DynamicResource MiniButtonStyle}" Focusable="False">
                 <Image Source="rss/arrow-up.png"/>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">

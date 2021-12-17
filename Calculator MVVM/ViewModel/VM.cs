@@ -13,7 +13,7 @@ namespace Calculator_MVVM.ViewModel
         Calculation _calculator = new Calculation();
         public string Operand { get { return _operand; } set { _operand = value; OnPropertyChanged(nameof(Operand)); } }
         public string Operation { get { return _operation; } set { _operation = value; OnPropertyChanged(nameof(Operation)); } }
-        public bool ErrorFieldVisibility { get { return _hasError; } set { if (value == _hasError) return; _hasError = value; OnPropertyChanged(nameof(ErrorFieldVisibility)); } }
+        public bool HasError { get { return _hasError; } set { if (value == _hasError) return; _hasError = value; OnPropertyChanged(nameof(HasError)); } }
         RelayCommand _operandCommand;
         RelayCommand _operationCommand;
         RelayCommand _pointCommand;
@@ -48,35 +48,35 @@ namespace Calculator_MVVM.ViewModel
         private void OperationInput(object o)
         {
             if (_hasError) ClearAll(o);
-            char Operator = o.ToString()[0];
-            _IsCalculationDone = false;            
-            if (!_IsCalculationRepeat)
+            char interOperator = o.ToString()[0];
+            _IsCalculationDone = false;
+            if (!_IsCalculationRepeat || Operand != null)
             {
+                if (_IsCalculationRepeat)
+                {
+                    Equal(o);
+                    Operation = _calculator.Operand1.ToString() + interOperator;
+                    _IsCalculationDone = false;
+                }
                 _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
-                Operation = _calculator.Operand1.ToString() + Operator;
                 Operand = null;
                 _IsCalculationRepeat = true;
-            }
-            else if (_IsCalculationRepeat && Operand == null) Operation = Operation.Remove(Operation.Length - 1) + Operator;
-            else
-            {
-                Equal(o);
-                _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
-                Operation = _calculator.Operand1.ToString() + Operator;
-                Operand = null;
-                _IsCalculationRepeat = true;
-                _IsCalculationDone = false;
-            }
-            _calculator.Operator = Operator;
+            }            
+            Operation = _calculator.Operand1.ToString() + interOperator;
+            _calculator.Operator = interOperator;
         }
         private void Equal(object o)               
         {
             if (Operation == null && !_IsCalculationDone) return;
-            if (!_IsCalculationDone && Operand != null) _calculator.Operand2 = double.Parse(Operand, Calculation._numberFormatInfo);
-            else if (_IsCalculationDone && Operand != null) _calculator.Operand1 = double.Parse(Operand, Calculation._numberFormatInfo);
+            if(Operand != null)
+            {
+                double operandParsed = double.Parse(Operand, Calculation._numberFormatInfo);
+                if (!_IsCalculationDone) _calculator.Operand2 = operandParsed;
+                else _calculator.Operand1 = operandParsed;
+            }                
             else _calculator.Operand2 = null;
             double? result = _calculator.Calculate();
-            if (result == null) ErrorFieldVisibility = true; 
+            if (result == null) HasError = true; 
             else Operand = result?.ToString(Calculation._numberFormatInfo);
             Operation = null;
             _IsCalculationRepeat = false;
@@ -91,7 +91,7 @@ namespace Calculator_MVVM.ViewModel
         private void ClearAll(object o)
         {
             Operation = null;
-            ErrorFieldVisibility = _IsCalculationDone = _IsCalculationRepeat = false;
+            HasError = _IsCalculationDone = _IsCalculationRepeat = false;
             _calculator.Reset();
             Clear(o);
         }
